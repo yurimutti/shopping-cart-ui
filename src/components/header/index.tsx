@@ -13,7 +13,7 @@ export const Header = ({ onCartClick }: HeaderProps) => {
   );
 
   return (
-    <header className="w-full bg-white text-red-600 flex items-center justify-between px-8 py-4 shadow-md mb-4 border-b border-gray-200">
+    <header className="w-full bg-white text-red-600 flex items-center justify-between px-8 py-4 shadow-lg mb-4 border-b border-gray-200">
       <div className="flex items-center gap-2">
         <Store size={28} />
       </div>
@@ -21,7 +21,7 @@ export const Header = ({ onCartClick }: HeaderProps) => {
       <button
         onClick={onCartClick}
         className={cn(
-          "relative flex items-center gap-2 rounded-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 font-medium transition-colors"
+          "relative flex items-center gap-2 rounded-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 font-medium transition-colors shadow-md"
         )}
         aria-label="Open cart"
       >
@@ -29,7 +29,7 @@ export const Header = ({ onCartClick }: HeaderProps) => {
         <span>Cart</span>
 
         {cartAmount > 0 && (
-          <span className="absolute -top-2 -right-2 bg-white text-red-600 text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+          <span className="absolute -top-2 -right-2 bg-white text-red-600 text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center shadow-md drop-shadow-md">
             {cartAmount}
           </span>
         )}
