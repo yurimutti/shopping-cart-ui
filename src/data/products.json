@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "Wireless Headphones", "price": 89.99, "quantity": 1 },
+  { "id": 2, "name": "Mechanical Keyboard", "price": 129.99, "quantity": 1 },
+  { "id": 3, "name": "USB-C Charging Cable", "price": 14.99, "quantity": 1 }
+]
