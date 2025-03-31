@@ -1,5 +1,12 @@
 [
   { "id": 1, "name": "Wireless Headphones", "price": 89.99, "quantity": 1 },
   { "id": 2, "name": "Mechanical Keyboard", "price": 129.99, "quantity": 1 },
-  { "id": 3, "name": "USB-C Charging Cable", "price": 14.99, "quantity": 1 }
+  { "id": 3, "name": "USB-C Charging Cable", "price": 14.99, "quantity": 1 },
+  { "id": 4, "name": "Smartphone Stand", "price": 19.99, "quantity": 1 },
+  { "id": 5, "name": "Bluetooth Speaker", "price": 49.99, "quantity": 1 },
+  { "id": 6, "name": "Laptop Sleeve", "price": 29.99, "quantity": 1 },
+  { "id": 7, "name": "Portable SSD", "price": 99.99, "quantity": 1 },
+  { "id": 8, "name": "Wireless Mouse", "price": 39.99, "quantity": 1 },
+  { "id": 9, "name": "HDMI Cable", "price": 12.99, "quantity": 1 },
+  { "id": 10, "name": "Webcam", "price": 69.99, "quantity": 1 }
 ]

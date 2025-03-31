@@ -1,23 +1,38 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CartSummary } from "@/modules/cart/cart-summary";
 import { ProductsList } from "@/modules/products/products-list";
 import productsData from "@/data/products.json";
 import { useCart } from "@/modules/cart/hooks/use-cart";
+import { Header } from "@/components/header";
+import { CartDrawer } from "@/modules/cart/cart-drawer";
+import { useState } from "react";
+import type { Product } from "@/types/product";
 
 export const Route = createFileRoute("/")({
   component: App,
 });
 
 function App() {
-  const { cart, handleAddToCart, handleRemoveFromCart, handleCheckout } = useCart();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const { cart, handleAddToCart, handleRemoveFromCart, handleCheckout } =
+    useCart();
+
+  const handleAddAndOpenCart = (product: Product) => {
+    handleAddToCart(product);
+    setIsCartOpen(true);
+  };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center p-8">
-      <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
-
-      <ProductsList products={productsData} onAddToCart={handleAddToCart} />
-
-      <CartSummary
+    <div className="flex-col gap-4">
+      <Header onCartClick={() => setIsCartOpen(true)} cartCount={cart.length} />
+      <ProductsList
+        products={productsData}
+        onAddToCart={handleAddAndOpenCart}
+      />
+      <CartDrawer
+        handleAddToCart={handleAddToCart}
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
         cart={cart}
         onRemove={handleRemoveFromCart}
         onCheckout={handleCheckout}

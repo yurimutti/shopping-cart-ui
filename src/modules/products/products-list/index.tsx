@@ -8,7 +8,7 @@ type ProductsListProps = {
 
 export const ProductsList = ({ products, onAddToCart }: ProductsListProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mb-12">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 w-full max-w-7xl mb-12 mx-auto">
       {products.map((product) => (
         <Product key={product.id} product={product} onAddToCart={onAddToCart} />
       ))}
