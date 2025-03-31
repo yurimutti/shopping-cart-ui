@@ -1,12 +1,18 @@
 import { ShoppingCart } from "lucide-react"; // ou qualquer ícone que use
 import { cn } from "@/utils/cn";
+import { useCartStore } from "@/stores/cart";
 
 type HeaderProps = {
   onCartClick: () => void;
   cartCount: number;
 };
 
-export const Header = ({ onCartClick, cartCount }: HeaderProps) => {
+export const Header = ({ onCartClick }: HeaderProps) => {
+
+  const cartAmount = useCartStore((state) =>
+    state.cart.reduce((total, item) => total + item.quantity, 0)
+  );
+  
   return (
     <header className="w-full bg-gray-800 text-white flex items-center justify-between px-8 py-4 shadow-lg mb-4">
       <h1 className="text-2xl font-bold">My Shop</h1>
@@ -21,9 +27,9 @@ export const Header = ({ onCartClick, cartCount }: HeaderProps) => {
         <ShoppingCart size={20} />
         <span>Cart</span>
 
-        {cartCount > 0 && (
+        {cartAmount > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-            {cartCount}
+            {cartAmount}
           </span>
         )}
       </button>
