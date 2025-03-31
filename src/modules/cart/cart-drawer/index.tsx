@@ -30,15 +30,15 @@ export const CartDrawer = ({
     >
       <div
         className={cn(
-          "fixed right-0 top-0 h-full w-full max-w-md bg-gray-800 p-6 shadow-lg transition-transform",
+          "fixed right-0 top-0 h-full w-full max-w-md bg-white p-6 shadow-lg transition-transform border-l border-gray-200",
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">Your Cart</h2>
+          <h2 className="text-2xl font-bold text-red-600">Your Cart</h2>
           <button
-            className="text-gray-400 hover:text-white"
+            className="text-gray-500 hover:text-red-600 text-xl"
             onClick={onClose}
             aria-label="Close cart"
           >

@@ -7,11 +7,13 @@ type ProductProps = {
 
 export const Product = ({ product, onAddToCart }: ProductProps) => {
   return (
-    <div className="rounded-2xl bg-gray-800 p-6 flex flex-col items-center shadow-lg">
-      <h2 className="text-xl font-semibold mb-2 text-white">{product.name}</h2>
-      <p className="text-gray-300 mb-4">${product.price.toFixed(2)}</p>
+    <div className="rounded-2xl bg-white p-6 flex flex-col items-center shadow-md border border-gray-200">
+      <h2 className="text-lg font-semibold mb-2 text-black text-center">
+        {product.name}
+      </h2>
+      <p className="text-gray-700 mb-4">${product.price.toFixed(2)}</p>
       <button
-        className="rounded-xl bg-blue-600 hover:bg-blue-700 px-4 py-2 text-sm font-medium transition-colors"
+        className="rounded-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-sm font-medium transition-colors"
         onClick={() => onAddToCart(product)}
         aria-label={`Add ${product.name} to cart`}
       >
