@@ -21,6 +21,7 @@ export const CartDrawer = ({
 }: CartDrawerProps) => {
   return (
     <div
+      role="presentation"
       className={cn(
         "fixed inset-0 z-50 bg-black/50 transition-opacity",
         isOpen ? "opacity-100 visible" : "opacity-0 invisible"

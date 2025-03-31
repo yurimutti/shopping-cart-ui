@@ -1,0 +1,77 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<CartSummary /> > should render cart items correctly 1`] = `
+<div
+  class="flex flex-col gap-4"
+>
+  <ul
+    aria-label="Shopping cart items"
+    class="space-y-2 mb-4 min-h-[100px] max-h-[600px] overflow-y-auto"
+    role="list"
+  >
+    <li
+      class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-200 shadow-sm"
+    >
+      <div
+        class="flex flex-col gap-1"
+      >
+        <span
+          class="font-medium text-black"
+        >
+          Cheeseburger Combo
+        </span>
+        <span
+          class="text-gray-500 text-sm"
+        >
+          Quantity: 
+          2
+        </span>
+        <span
+          class="text-gray-700 text-sm"
+        >
+          $
+          12.99
+        </span>
+      </div>
+      <div
+        class="flex items-center gap-2"
+      >
+        <button
+          aria-label="Remove Cheeseburger Combo"
+          class="text-gray-500 hover:text-black text-sm font-medium"
+        >
+          Remove
+        </button>
+        <button
+          aria-label="Add one Cheeseburger Combo"
+          class="bg-black hover:bg-gray-800 text-white rounded-full w-7 h-7 flex items-center justify-center"
+        >
+          +
+        </button>
+        <button
+          aria-label="Remove one Cheeseburger Combo"
+          class="bg-black hover:bg-gray-800 text-white rounded-full w-7 h-7 flex items-center justify-center"
+        >
+          -
+        </button>
+      </div>
+    </li>
+  </ul>
+  <div
+    class="flex justify-between items-center mb-4 text-base font-medium text-black"
+  >
+    <span>
+      Total:
+    </span>
+    <span>
+      $
+      25.98
+    </span>
+  </div>
+  <button
+    class="w-full rounded-full p-3 font-semibold transition-colors bg-red-600 hover:bg-red-700 text-white"
+  >
+    Checkout
+  </button>
+</div>
+`;

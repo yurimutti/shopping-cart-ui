@@ -1,0 +1,102 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<CartDrawer /> > should render when open 1`] = `
+<div
+  aria-hidden="false"
+  class="fixed inset-0 z-50 bg-black/50 transition-opacity opacity-100 visible"
+  role="presentation"
+>
+  <div
+    class="fixed right-0 top-0 h-full w-full max-w-md bg-white p-6 shadow-lg transition-transform border-l border-gray-200 translate-x-0"
+  >
+    <div
+      class="flex justify-between items-center mb-6"
+    >
+      <h2
+        class="text-2xl font-bold text-red-600"
+      >
+        Your Cart
+      </h2>
+      <button
+        aria-label="Close cart"
+        class="text-gray-500 hover:text-red-600 text-xl"
+      >
+        ✕
+      </button>
+    </div>
+    <div
+      class="flex flex-col gap-4"
+    >
+      <ul
+        aria-label="Shopping cart items"
+        class="space-y-2 mb-4 min-h-[100px] max-h-[600px] overflow-y-auto"
+        role="list"
+      >
+        <li
+          class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-200 shadow-sm"
+        >
+          <div
+            class="flex flex-col gap-1"
+          >
+            <span
+              class="font-medium text-black"
+            >
+              Cheeseburger Combo
+            </span>
+            <span
+              class="text-gray-500 text-sm"
+            >
+              Quantity: 
+              2
+            </span>
+            <span
+              class="text-gray-700 text-sm"
+            >
+              $
+              12.99
+            </span>
+          </div>
+          <div
+            class="flex items-center gap-2"
+          >
+            <button
+              aria-label="Remove Cheeseburger Combo"
+              class="text-gray-500 hover:text-black text-sm font-medium"
+            >
+              Remove
+            </button>
+            <button
+              aria-label="Add one Cheeseburger Combo"
+              class="bg-black hover:bg-gray-800 text-white rounded-full w-7 h-7 flex items-center justify-center"
+            >
+              +
+            </button>
+            <button
+              aria-label="Remove one Cheeseburger Combo"
+              class="bg-black hover:bg-gray-800 text-white rounded-full w-7 h-7 flex items-center justify-center"
+            >
+              -
+            </button>
+          </div>
+        </li>
+      </ul>
+      <div
+        class="flex justify-between items-center mb-4 text-base font-medium text-black"
+      >
+        <span>
+          Total:
+        </span>
+        <span>
+          $
+          25.98
+        </span>
+      </div>
+      <button
+        class="w-full rounded-full p-3 font-semibold transition-colors bg-red-600 hover:bg-red-700 text-white"
+      >
+        Checkout
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -6,13 +6,16 @@
     "start": "vite --port 3000",
     "build": "vite build && tsc",
     "serve": "vite preview",
-    "test": "vitest run"
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-router": "^1.114.3",
     "@tanstack/react-router-devtools": "^1.114.3",
     "@tanstack/router-plugin": "^1.114.3",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@vitejs/plugin-react-swc": "^3.8.1",
     "clsx": "^2.1.1",
     "install": "^0.13.0",
     "lucide-react": "^0.485.0",
@@ -21,6 +24,7 @@
     "react-toastify": "^11.0.5",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.6",
+    "vite-tsconfig-paths": "^5.1.4",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
@@ -29,10 +33,11 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "happy-dom": "^17.4.4",
     "jsdom": "^26.0.0",
     "typescript": "^5.7.2",
     "vite": "^6.1.0",
-    "vitest": "^3.0.5",
+    "vitest": "^3.0.9",
     "web-vitals": "^4.2.4"
   }
 }

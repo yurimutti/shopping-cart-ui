@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<CartItem /> > should render the cart item correctly 1`] = `
+<li
+  class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-200 shadow-sm"
+  role="listitem"
+>
+  <div
+    class="flex flex-col gap-1"
+  >
+    <span
+      class="font-medium text-red-600"
+    >
+      Cheeseburger Combo
+    </span>
+    <span
+      class="text-gray-500 text-sm"
+    >
+      Quantity: 
+      2
+    </span>
+  </div>
+  <button
+    aria-label="Remove Cheeseburger Combo from cart"
+    class="text-red-600 hover:text-red-700 text-sm font-medium"
+  >
+    Remove
+  </button>
+</li>
+`;
