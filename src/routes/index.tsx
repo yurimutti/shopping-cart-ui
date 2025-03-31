@@ -1,10 +1,11 @@
+import { cn } from "@/utils/cn";
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const Route = createFileRoute("/")({
   component: App,
 });
-
-import { useState } from "react";
 
 type Product = {
   id: number;
@@ -14,9 +15,9 @@ type Product = {
 };
 
 const products: Product[] = [
-  { id: 1, name: "Product A", price: 29.99, quantity: 1 },
-  { id: 2, name: "Product B", price: 49.99, quantity: 1 },
-  { id: 3, name: "Product C", price: 19.99, quantity: 1 },
+  { id: 1, name: "Wireless Headphones", price: 89.99, quantity: 1 },
+  { id: 2, name: "Mechanical Keyboard", price: 129.99, quantity: 1 },
+  { id: 3, name: "USB-C Charging Cable", price: 14.99, quantity: 1 },
 ];
 
 function App() {
@@ -25,7 +26,11 @@ function App() {
   const handleAddToCart = (product: Product) => {
     const isProductInCart = cart.some((item) => item.id === product.id);
     if (isProductInCart) {
-      console.log("Product already in cart, increasing quantity");
+      toast.success(`Increased quantity of ${product.name}`, {
+        position: "bottom-right",
+        autoClose: 2500,
+        theme: "colored",
+      });
       setCart((prevCart) =>
         prevCart.map((item) =>
           item.id === product.id
@@ -35,22 +40,24 @@ function App() {
       );
       return;
     }
-    console.log("Adding product to cart", product);
-
+    toast.success(`${product.name} added to cart`, {
+      position: "bottom-right",
+      autoClose: 2500,
+      theme: "colored",
+    });
     setCart((prevCart) => [...prevCart, product]);
   };
 
   const handleRemoveFromCart = (productId: number) => {
-    console.log("Removing product from cart", productId);
-
-    const isProductInCart = cart.some((item) => item.id === productId);
-
-    if (!isProductInCart) {
-      return;
-    }
     const productInCart = cart.find((item) => item.id === productId);
+    if (!productInCart) return;
 
-    if (productInCart && productInCart.quantity && productInCart.quantity > 1) {
+    if (productInCart.quantity && productInCart.quantity > 1) {
+      toast.warning(`Reduced quantity of ${productInCart.name}`, {
+        position: "bottom-right",
+        autoClose: 2500,
+        theme: "colored",
+      });
       setCart((prevCart) =>
         prevCart.map((item) =>
           item.id === productId
@@ -61,11 +68,20 @@ function App() {
       return;
     }
 
+    toast.warning(`${productInCart.name} removed from cart`, {
+      position: "bottom-right",
+      autoClose: 2500,
+      theme: "colored",
+    });
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
   const handleCheckout = () => {
-    console.log("Proceeding to checkout with items:", cart);
+    toast.success("Order placed successfully!", {
+      position: "bottom-right",
+      autoClose: 2500,
+      theme: "colored",
+    });
     setCart([]);
   };
 
@@ -101,11 +117,11 @@ function App() {
               className="flex justify-between items-center bg-gray-700 p-4 rounded-lg"
             >
               <span>{item.name}</span>
-
+              
               <span className="text-gray-400 text-sm">
                 Quantity: {item.quantity}
               </span>
-
+              
               <button
                 className="text-red-500 hover:text-red-600"
                 onClick={() => handleRemoveFromCart(item.id)}
@@ -131,7 +147,13 @@ function App() {
         </ul>
 
         <button
-          className="w-full rounded-xl bg-green-600 hover:bg-green-700 p-3 font-semibold transition-colors"
+          className={cn(
+            "w-full rounded-xl p-3 font-semibold transition-colors",
+            cart.length === 0
+              ? "bg-gray-700 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-700"
+          )}
+          disabled={cart.length === 0}
           onClick={handleCheckout}
         >
           Checkout
