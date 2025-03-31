@@ -25,6 +25,7 @@ function App() {
   return (
     <div className="flex-col gap-4">
       <Header onCartClick={() => setIsCartOpen(true)} cartCount={cart.length} />
+        
       <ProductsList
         products={productsData}
         onAddToCart={handleAddAndOpenCart}

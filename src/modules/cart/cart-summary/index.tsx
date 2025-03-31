@@ -21,7 +21,7 @@ export const CartSummary = ({
   return (
     <div className="flex flex-col gap-4">
       <ul
-        className="space-y-2 mb-4 min-h-[100px] max-h-[300px] overflow-y-auto"
+        className="space-y-2 mb-4 min-h-[100px] max-h-[600px] overflow-y-auto"
         role="list"
         aria-label="Shopping cart items"
       >
