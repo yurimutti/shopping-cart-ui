@@ -10,28 +10,63 @@ type Product = {
   id: number;
   name: string;
   price: number;
+  quantity?: number;
 };
 
 const products: Product[] = [
-  { id: 1, name: "Product A", price: 29.99 },
-  { id: 2, name: "Product B", price: 49.99 },
-  { id: 3, name: "Product C", price: 19.99 },
+  { id: 1, name: "Product A", price: 29.99, quantity: 1 },
+  { id: 2, name: "Product B", price: 49.99, quantity: 1 },
+  { id: 3, name: "Product C", price: 19.99, quantity: 1 },
 ];
 
 function App() {
   const [cart, setCart] = useState<Product[]>([]);
 
   const handleAddToCart = (product: Product) => {
-    // Check if the product is already in the cart
     const isProductInCart = cart.some((item) => item.id === product.id);
     if (isProductInCart) {
-      console.log("Product already in cart");
+      console.log("Product already in cart, increasing quantity");
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: (item.quantity || 1) + 1 }
+            : item
+        )
+      );
       return;
     }
-    // Add the product to the cart
     console.log("Adding product to cart", product);
-  
+
     setCart((prevCart) => [...prevCart, product]);
+  };
+
+  const handleRemoveFromCart = (productId: number) => {
+    console.log("Removing product from cart", productId);
+
+    const isProductInCart = cart.some((item) => item.id === productId);
+
+    if (!isProductInCart) {
+      return;
+    }
+    const productInCart = cart.find((item) => item.id === productId);
+
+    if (productInCart && productInCart.quantity && productInCart.quantity > 1) {
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === productId
+            ? { ...item, quantity: (item.quantity || 1) - 1 }
+            : item
+        )
+      );
+      return;
+    }
+
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
+
+  const handleCheckout = () => {
+    console.log("Proceeding to checkout with items:", cart);
+    setCart([]);
   };
 
   return (
@@ -66,16 +101,39 @@ function App() {
               className="flex justify-between items-center bg-gray-700 p-4 rounded-lg"
             >
               <span>{item.name}</span>
-              <span>${item.price.toFixed(2)}</span>
+
+              <span className="text-gray-400 text-sm">
+                Quantity: {item.quantity}
+              </span>
+
+              <button
+                className="text-red-500 hover:text-red-600"
+                onClick={() => handleRemoveFromCart(item.id)}
+              >
+                Remove
+              </button>
             </li>
           ))}
 
           {cart.length === 0 && (
             <li className="text-gray-500">Your cart is empty</li>
           )}
+
+          <span className="text-gray-400 text-sm">
+            Total: $
+            {cart
+              .reduce(
+                (total, item) => total + item.price * (item.quantity || 1),
+                0
+              )
+              .toFixed(2)}
+          </span>
         </ul>
 
-        <button className="w-full rounded-xl bg-green-600 hover:bg-green-700 p-3 font-semibold transition-colors">
+        <button
+          className="w-full rounded-xl bg-green-600 hover:bg-green-700 p-3 font-semibold transition-colors"
+          onClick={handleCheckout}
+        >
           Checkout
         </button>
       </div>
